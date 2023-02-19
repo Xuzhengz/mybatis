@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个DAO(Mapper)接口-->
+<mapper namespace="com.xzz.dao.UserMApper">
+    <!--id对应方法名称,resultType对应结果实体类-->
+    <select id="getUserList" resultType="com.xzz.pojo.User">
+        select * from t_user
+    </select>
+    <select id="getUserById" parameterType="int" resultType="com.xzz.pojo.User">
+        select * from t_user where id = #{id}
+    </select>
+    <insert id="addUser" parameterType="com.xzz.pojo.User">
+        insert into t_user(uname,pwd,email,role) values(#{uname},#{pwd},#{email},#{role})
+    </insert>
+    <update id="updateUser" parameterType="com.xzz.pojo.User">
+        update t_user set uname = #{uname},pwd = #{pwd},email = #{email}, role = #{role} where id = #{id}
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete from t_user where id = #{id}
+    </delete>
+
+
+</mapper>
